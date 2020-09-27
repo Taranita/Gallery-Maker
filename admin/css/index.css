@@ -1,0 +1,43 @@
+a {font-family:verdana, tahoma, arial, helvetica, sans-serif; color:black; font-weight:bold; text-decoration:none;}
+a:hover {background-color:#ffb273}
+.mainhdg {font-size: 18pt; font-family:verdana, tahoma, arial, helvetica, sans-serif; color:#000; font-weight:bold}
+.hdg {font-size: 18pt; font-family:verdana, tahoma, arial, helvetica, sans-serif; color:#000; }
+.lnk:hover {background-color:#ffb273}
+tr.bl {background-color:#a84b4b}
+div.bordered {
+	border-width: 5px;
+	border-spacing: 2px;
+	border-style: solid;
+	border-color: #004000;
+	background-color: white;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+table.lines {
+	border-width: 5px;
+	border-spacing: 2px;
+	border-style: solid;
+	border-color: #500000;
+	background-color:white;
+	z-index: 1000;
+}
+
+.noBorders {
+	border: none;
+	width:100%;
+  margin:0;
+  padding:0;
+	border-collapse: collapse;
+}
+
+.bgPics {
+	border: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+body {
+	background: black
+}

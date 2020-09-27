@@ -1,0 +1,132 @@
+.mainhdg {
+	font-size:18pt; 
+	font-family:verdana, tahoma, arial, helvetica, sans-serif; 
+	color:#fff; 
+	font-weight:bold; 
+	position:relative; left:16px; top:1px; 
+	white-space: nowrap;
+}
+
+.hdg {font-size: 18pt; font-family:verdana, tahoma, arial, helvetica, sans-serif; color:#000; }
+
+a:link{color: #2196F3;}
+a:visited{color: #2196F3;}
+a:hover{color: Crimson; }
+a:active{color: #2196F3;}
+
+.bordered {
+	position:absolute; 
+	top:20px; width:100%; 
+	height:40px; 
+	background-color:#2196F3;
+}
+.t-links{
+	font-size:10pt; 
+	font-family:verdana, tahoma, arial, helvetica, sans-serif; 
+	color:#2196F3;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.myDialogTitleClass {
+	background:#2196F3;
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+.myDialogContentClass {
+	font-weight: 400;
+	font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+	color: #2196F3;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+ul.subList {
+	text-indent: 2em;
+}
+
+/* slideshow */
+.mySlides {
+	display:none; 
+	position:absolute; 
+	top:85px;
+}
+.outer-text {
+	color: white; 
+	position:absolute; 
+	top:45px;
+}
+.t-btn{
+	position:absolute;
+	background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+	border-radius: 2px;
+}
+.btn{
+	background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 2px 4px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+	border-radius: 2px;
+}
+.bordered-btn{
+	background-color: white;
+    color: #008CBA;
+}
+body.blackBody {
+	background-color: black;
+}
+a.whiteText{
+	color: white;
+}
+.btn-bar{
+	position:absolute; 
+	width:100%; 
+	text-align:center;
+}
+
+.btnDesc{	
+    color: #008CBA;
+	font-size:10pt; 
+	padding: 2px;
+	background-color: white;
+}
+
+.txtBx{
+	position: absolute;
+}
+
+.flex-container {
+	/* border: 1px solid black; */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.flex-item {
+	padding: 0 10px 0 10px;
+}
+
+.icon-box {
+	padding: 10px;
+}

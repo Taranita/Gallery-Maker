@@ -1,0 +1,18 @@
+<!-- Start of Footer -->
+
+<div id="Menu" style="position:relative; top:100px;" hidden="true">
+
+User = <?php if(isset($_SESSION['user_id'])){echo $_SESSION['user_id'];}; ?><br>
+load_mode = <?php if(isset($_SESSION['load_mode'])){echo $_SESSION['load_mode'];}; ?><br>
+server = <?php echo $_SERVER['SERVER_NAME']; ?><br>
+page = <?php echo $_SERVER['PHP_SELF']; ?><br>
+request URI = <?php echo $_SERVER['REQUEST_URI']; ?><br>
+relative path = <?php echo left_of($_SERVER['REQUEST_URI'], '/admin'); ?><br>
+
+</div><!-- Menu -->
+
+</body>
+</html>
+<?php // Flush the buffered output.
+ob_end_flush();
+?>

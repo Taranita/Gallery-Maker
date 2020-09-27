@@ -1,0 +1,79 @@
+<?php // header.html
+// This page begins the HTML header for the site.
+
+// Initialize a session:
+require ('includes/taranita_config.inc.php'); 
+require('includes/php_functions.inc.php');
+ini_set('session.use_only_cookies', 1);
+session_name('TaranitaAdmin' . TITLE);
+session_start();
+
+// Handler session timeout
+if (isset($_SESSION['user_id'])) {
+	// Get logged in elapsed time from settings table:
+	require (MYSQL);
+	$q = "SELECT timeout_mins FROM " . DB_TAB_SETTINGS . " LIMIT 1";
+	$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
+		
+	if (@mysqli_num_rows($r) == 1) { // A match was made.
+		$row = $r->fetch_assoc();
+		$timeout_mins = intval($row["timeout_mins"]);
+	}else{
+		// Fallback value if MySQL lookup unsuccessful:
+		$timeout_mins = 5;
+	}
+	mysqli_free_result($r);
+	mysqli_close($dbc);
+	
+	if( $_SESSION['last_activity'] < time()-$timeout_mins*60) { //have we expired?
+		//redirect to logout.php
+		$relative_path = left_of($_SERVER['REQUEST_URI'], '/admin');
+		header('Location: '.$relative_path.'/admin/timeout.php'); //redirect to time out page.
+	}else{
+		$_SESSION['last_activity'] = time(); //this was the moment of last activity.
+	}
+}
+
+// Check for a $page_title value:
+if (!isset($page_title)) {
+	$page_title = 'User Registration';
+}
+?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title><?php echo $page_title; ?></title>		
+	<link rel="stylesheet" href="<?php echo w3_stylesheet_path ?>">
+	<link rel="stylesheet" href="<?php echo jquery_stylesheet_path ?>">
+	<link rel="stylesheet" href="../taranita.css">
+	<link rel="shortcut icon" href="<?php echo icon_path ?>">
+</head>
+
+<script src="<?php echo angular_path ?>"></script>
+<script src="<?php echo angular_functions_path ?>"></script>
+<script src="<?php echo jquery_path ?>"></script>
+<script src="<?php echo jquery_ui_path ?>"></script>
+<script src="js/js_functions.js"></script>
+
+<body>
+
+<div id="Header" class="bordered">
+	<div class="mainhdg">
+		<a href=".." style="color: white">taranita.com</a>
+	</div>
+	<div class="t-links" style="padding: 5px;">
+		<div>
+			&nbsp;<a href="..">home</a>
+			<?php 
+				if (!endsWith($_SERVER['PHP_SELF'], '/admin/logout.php') && !endsWith($_SERVER['PHP_SELF'], '/admin/login.php') && !endsWith($_SERVER['PHP_SELF'], '/admin/timeout.php')) {echo "&nbsp;|&nbsp;<a href='logout.php'>logout</a>";};
+				if (!endsWith($_SERVER['PHP_SELF'], '/admin/admin.php') && !endsWith($_SERVER['PHP_SELF'], '/admin/logout.php') && !endsWith($_SERVER['PHP_SELF'], '/admin/timeout.php') && isset($_SESSION['user_id'])) {echo "&nbsp;|&nbsp;<a href='admin.php'>admin</a>";};
+				if (endsWith($_SERVER['PHP_SELF'], '/admin/logout.php') || endsWith($_SERVER['PHP_SELF'], '/admin/timeout.php')) {echo "&nbsp;|&nbsp;<a href='login.php'>login</a>";};
+			?>	
+		</div>
+		<div>
+			<a href='javascript:launchHelp();'>help</a>&nbsp;
+		</div>		
+	</div>
+</div>
+<!-- End of Header -->
